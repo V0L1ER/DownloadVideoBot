@@ -18,7 +18,7 @@ async def main():
         dp.include_router(callback.router)
         print("Bot Start")
         await dp.start_polling(bot)
-        await bot.session.close()  # Закрытие сессии
+        await bot.session.close()  
     except Exception as ex:
         print(f"There is an Exception: {ex}")
         
