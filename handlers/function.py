@@ -10,8 +10,12 @@ def generate_url_id(url: str) -> str:
 async def download_and_send_media(bot, chat_id, url, media_type):
     
     ydl_opts = {
-        'format': 'best[ext=mp4]' if media_type == "video" else 'bestaudio[ext=m4a]/best',
-        'outtmpl': f'downloads/%(title)s.{"mp4" if media_type == "video" else "m4a"}',
+        'format': 'best',
+        'outtmpl': 'downloads/%(id)s.%(ext)s',  
+        'http_headers': {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        },
+        'socket_timeout': 60  
     }
 
     try:
